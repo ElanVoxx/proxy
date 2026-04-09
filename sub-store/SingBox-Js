@@ -1,0 +1,41 @@
+let config = (ProxyUtils.JSON5 || JSON).parse($content ?? $files[0])
+
+let proxies = await produceArtifact({
+  type: 'subscription',   // 如果是组合订阅改成 'collection'
+  name: '订阅的name',     // 改成你的订阅名称
+  platform: 'sing-box',
+  produceType: 'internal'
+})
+
+const proxyTags = proxies.map(p => p.tag)
+const outbounds = config.outbounds || []
+
+// 固定节点
+const directOutbound = outbounds.find(i => i.tag === 'direct')
+const selectOutbound = outbounds.find(i => i.tag === 'Select')
+const othersOutbound = outbounds.find(i => i.tag === 'Others')
+
+// 其余 selector：除了 direct / Select / Others 之外，自动处理
+const extraSelectors = outbounds.filter(i =>
+  i.type === 'selector' &&
+  !['direct', 'Select', 'Others'].includes(i.tag)
+)
+
+config.outbounds = [
+  ...(directOutbound ? [directOutbound] : []),
+  ...proxies,
+  ...(selectOutbound ? [{
+    ...selectOutbound,
+    outbounds: [...proxyTags]
+  }] : []),
+  ...extraSelectors.map(i => ({
+    ...i,
+    outbounds: ['Select', ...proxyTags]
+  })),
+  ...(othersOutbound ? [{
+    ...othersOutbound,
+    outbounds: ['Select', 'direct']
+  }] : [])
+]
+
+$content = JSON.stringify(config, null, 2)
