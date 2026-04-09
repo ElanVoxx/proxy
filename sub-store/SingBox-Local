@@ -81,7 +81,7 @@
     "auto_detect_interface": true,
     "rule_set": [
       {
-        "tag": "proxylist",
+        "tag": "diyproxy",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/ElanVoxx/proxy/refs/heads/main/rule/diyproxy.srs",
@@ -161,7 +161,7 @@
         "action": "hijack-dns"
       },
       {
-        "rule_set": ["proxylist"],
+        "rule_set": ["diyproxy"],
         "outbound": "Select"
       },
       {
