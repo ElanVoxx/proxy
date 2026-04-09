@@ -81,6 +81,13 @@
     "auto_detect_interface": true,
     "rule_set": [
       {
+        "tag": "proxylist",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/ElanVoxx/proxy/refs/heads/main/rule/diyproxy.srs",
+        "download_detour": "Select"
+      },
+      {
         "tag": "openai",
         "type": "remote",
         "format": "binary",
@@ -152,6 +159,10 @@
       {
         "protocol": "dns",
         "action": "hijack-dns"
+      },
+      {
+        "rule_set": ["proxylist"],
+        "outbound": "Select"
       },
       {
         "rule_set": ["openai"],
