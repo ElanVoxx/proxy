@@ -19,7 +19,7 @@
     ],
     "rules": [
       {
-        "rule_set": ["openai", "youtube", "telegram", "pikpak", "proxy"],
+        "rule_set": ["diyproxy", "openai", "youtube", "telegram", "pikpak", "proxy"],
         "server": "dns-proxy"
       },
       {
