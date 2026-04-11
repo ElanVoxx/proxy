@@ -1,0 +1,100 @@
+let config = (ProxyUtils.JSON5 || JSON).parse($content ?? $files[0])
+
+// 这里改成你的订阅名称
+const artifact = await produceArtifact({
+  type: 'subscription',   // 如果你用的是组合订阅，这里改成 'collection'
+  name: 'Yling',
+  platform: 'sing-box',
+  produceType: 'internal'
+})
+
+// 兼容两种返回格式：数组 或 { outbounds, endpoints }
+const proxies = Array.isArray(artifact) ? artifact : (artifact.outbounds || [])
+const endpoints = Array.isArray(artifact?.endpoints) ? artifact.endpoints : []
+
+// 所有节点 tag
+const proxyTags = [...new Set(proxies.map(p => p.tag).filter(Boolean))]
+
+if (!proxyTags.length) {
+  throw new Error('订阅 Emery 没有生成任何节点，无法填充 Select')
+}
+
+// 原有 outbounds
+const outbounds = Array.isArray(config.outbounds) ? config.outbounds : []
+
+// 提取固定出站
+const directOutbound = outbounds.find(i => i.tag === 'direct')
+const selectOutbound = outbounds.find(i => i.tag === 'Select')
+const aiOutbound = outbounds.find(i => i.tag === 'Ai')
+const youtubeOutbound = outbounds.find(i => i.tag === 'YouTube')
+const telegramOutbound = outbounds.find(i => i.tag === 'Telegram')
+const pikpakOutbound = outbounds.find(i => i.tag === 'PikPak')
+const othersOutbound = outbounds.find(i => i.tag === 'Others')
+const globalOutbound = outbounds.find(i => i.tag === 'GLOBAL')
+
+// 已处理的 selector tag
+const handledTags = ['direct', 'Select', 'Ai', 'YouTube', 'Telegram', 'PikPak', 'Others', 'GLOBAL']
+
+// 额外 selector 自动补充
+const extraSelectors = outbounds.filter(i =>
+  i.type === 'selector' && !handledTags.includes(i.tag)
+)
+
+// 保留其它静态非 selector 出站，避免以后加了别的固定出站被覆盖
+const extraStaticOutbounds = outbounds.filter(i =>
+  i.tag &&
+  i.tag !== 'direct' &&
+  i.type !== 'selector' &&
+  !proxyTags.includes(i.tag)
+)
+
+// 重新组装 outbounds
+config.outbounds = [
+  ...(directOutbound ? [directOutbound] : []),
+  ...extraStaticOutbounds,
+  ...proxies,
+  ...(selectOutbound ? [{
+    ...selectOutbound,
+    outbounds: [...proxyTags]
+  }] : []),
+  ...(aiOutbound ? [{
+    ...aiOutbound,
+    outbounds: ['Select', ...proxyTags]
+  }] : []),
+  ...(youtubeOutbound ? [{
+    ...youtubeOutbound,
+    outbounds: ['Select', ...proxyTags]
+  }] : []),
+  ...(telegramOutbound ? [{
+    ...telegramOutbound,
+    outbounds: ['Select', ...proxyTags]
+  }] : []),
+  ...(pikpakOutbound ? [{
+    ...pikpakOutbound,
+    outbounds: ['Select', ...proxyTags]
+  }] : []),
+  ...(othersOutbound ? [{
+    ...othersOutbound,
+    outbounds: ['Select', 'direct']
+    // 如果你想 Others 里也能直接选节点，就改成：
+    // outbounds: ['Select', 'direct', ...proxyTags]
+  }] : []),
+  ...(globalOutbound ? [{
+    ...globalOutbound,
+    outbounds: ['Select', 'direct', ...proxyTags]
+  }] : []),
+  ...extraSelectors.map(i => ({
+    ...i,
+    outbounds: ['Select', ...proxyTags]
+  }))
+]
+
+// 如果订阅里有 endpoints，也一起带上
+if (endpoints.length) {
+  config.endpoints = [
+    ...(Array.isArray(config.endpoints) ? config.endpoints : []),
+    ...endpoints
+  ]
+}
+
+$content = JSON.stringify(config, null, 2)
