@@ -1,0 +1,363 @@
+# Clash/Mihomo规则集 - 基于DDPI特征库转换
+# 分类：应用识别规则
+# 格式：DOMAIN-SUFFIX, DOMAIN, IP-CIDR等
+
+# 聊天类应用
+chat:
+  - DOMAIN-SUFFIX,weixin.qq.com
+  - DOMAIN-SUFFIX,weibo.com
+  - DOMAIN-SUFFIX,momo.com
+  - DOMAIN-SUFFIX,alipay.com
+  - DOMAIN-SUFFIX,alipayobjects.com
+  - DOMAIN-SUFFIX,alive.alipay.com
+  - DOMAIN-SUFFIX,dingtalk.com
+  - DOMAIN-SUFFIX,feishu.cn
+  - DOMAIN-SUFFIX,soulapp.com
+  - DOMAIN-SUFFIX,520yidui.com
+  - DOMAIN-SUFFIX,tancdn.com
+  - DOMAIN-SUFFIX,tantanapp.com
+  - DOMAIN-SUFFIX,ppkankan.com
+  - DOMAIN-SUFFIX,ifreetalk.com
+
+# 游戏类应用
+game:
+  # 王者荣耀相关域名（示例）
+  - DOMAIN-SUFFIX,netease.com
+  - DOMAIN-SUFFIX,4399.com
+  - DOMAIN-SUFFIX,mini1.cn
+  - DOMAIN-SUFFIX,dailygn.com
+  - DOMAIN-SUFFIX,huanle.qq.com
+  - DOMAIN-SUFFIX,ymzx.qq.com
+  - DOMAIN-SUFFIX,yuanshen.com
+  - DOMAIN-SUFFIX,ys.mihoyo.com
+  - DOMAIN-SUFFIX,asphalt9.com
+  - DOMAIN-SUFFIX,happyelements.com
+  - DOMAIN-SUFFIX,xssh.qq.com
+  - DOMAIN-SUFFIX,lrs.fp.com
+  - DOMAIN-SUFFIX,s4.luobo.cn
+  - DOMAIN-SUFFIX,9377.com
+  - DOMAIN-SUFFIX,7k7k.com
+  - DOMAIN-SUFFIX,17173.com
+  - DOMAIN-SUFFIX,37.com
+  - DOMAIN-SUFFIX,gamersky.com
+  - DOMAIN-SUFFIX,ali213.net
+  - DOMAIN-SUFFIX,game.hao123.com
+  - DOMAIN-SUFFIX,51.com
+  - DOMAIN-SUFFIX,wan.baidu.com
+  - DOMAIN-SUFFIX,4366yy.381pk.com
+  - DOMAIN-SUFFIX,wyyx.hao123.com
+  - DOMAIN-SUFFIX,sy.hao123.com
+  - DOMAIN-SUFFIX,xyx.hao123.com
+  - DOMAIN-SUFFIX,wows.360.cn
+  - DOMAIN-SUFFIX,wot.360.cn
+  - DOMAIN-SUFFIX,381pk.com
+  - DOMAIN-SUFFIX,wan.2345.com
+  - DOMAIN-SUFFIX,caihong.com
+  - DOMAIN-SUFFIX,mg.uu.163.com
+  - DOMAIN-SUFFIX,m.acc.qq.com
+  - DOMAIN-SUFFIX,xunyou.mobi
+  - DOMAIN-SUFFIX,biubiu001.com
+  - DOMAIN-SUFFIX,xiaoheihe.cn
+  - DOMAIN-SUFFIX,max-c.com
+  - DOMAIN-SUFFIX,papegames.com
+  - DOMAIN-SUFFIX,adjust.cn
+  - DOMAIN-SUFFIX,fineboost.cn
+  - DOMAIN-SUFFIX,go2s.co
+  - DOMAIN-SUFFIX,playrix.com
+  - DOMAIN-SUFFIX,uu.cc
+
+# 视频类应用
+video:
+  - DOMAIN-SUFFIX,douyin.com
+  - DOMAIN-SUFFIX,amemv.com
+  - DOMAIN-SUFFIX,pstatp.com
+  - DOMAIN-SUFFIX,volcsirius.com
+  - DOMAIN-SUFFIX,ecombdapi.com
+  - DOMAIN-SUFFIX,douyu.com
+  - DOMAIN-SUFFIX,iqiyi.com
+  - DOMAIN-SUFFIX,qy.net
+  - DOMAIN-SUFFIX,inter.71edge.com
+  - DOMAIN-SUFFIX,bilibili.com
+  - DOMAIN-SUFFIX,bilivideo.com
+  - DOMAIN-SUFFIX,data.bilibili.com
+  - DOMAIN-SUFFIX,biliapi.net
+  - DOMAIN-SUFFIX,hdslb.com
+  - DOMAIN-SUFFIX,ixigua.com
+  - DOMAIN-SUFFIX,snsdk.com
+  - DOMAIN-SUFFIX,xg-p.ixigua.com
+  - DOMAIN-SUFFIX,bdxigua.com
+  - DOMAIN-SUFFIX,huya.com
+  - DOMAIN-SUFFIX,cntv.cn
+  - DOMAIN-SUFFIX,cctv.cn
+  - DOMAIN-SUFFIX,yangshi.com
+  - DOMAIN-SUFFIX,xiaohongshu.com
+  - DOMAIN-SUFFIX,xhscdn.com
+  - DOMAIN-SUFFIX,huajiao.com
+  - DOMAIN-SUFFIX,inke.cn
+  - DOMAIN-SUFFIX,mgtv.com
+  - DOMAIN-SUFFIX,hitv.com
+  - DOMAIN-SUFFIX,aty.sohu.com
+  - DOMAIN-SUFFIX,tv.itc.cn
+  - DOMAIN-SUFFIX,miguvideo.com
+  - DOMAIN-SUFFIX,migu.cn
+  - DOMAIN-SUFFIX,rr.tv
+  - DOMAIN-SUFFIX,youku.com
+  - DOMAIN-SUFFIX,ykimg.com
+  - DOMAIN-SUFFIX,izuiyou.com
+  - DOMAIN-SUFFIX,funshion.com
+  - DOMAIN-SUFFIX,randlove.cn
+  - DOMAIN-SUFFIX,yueliao.com
+  - DOMAIN-SUFFIX,5glive.com
+  - DOMAIN-SUFFIX,hanju.koudaibaobao.com
+  - DOMAIN-SUFFIX,egame.qq.com
+  - DOMAIN-SUFFIX,liveplay.com
+  - DOMAIN-SUFFIX,miaopai.com
+  - DOMAIN-SUFFIX,bssdl.kugou.com
+  - DOMAIN-SUFFIX,rt-m.kugou.com
+  - DOMAIN-SUFFIX,kgimg.com
+  - DOMAIN-SUFFIX,wasu.cn
+  - DOMAIN-SUFFIX,pearvideo.com
+  - DOMAIN-SUFFIX,vcinema.cn
+  - DOMAIN-SUFFIX,v.6.cn
+  - DOMAIN-SUFFIX,live.baidu.com
+  - DOMAIN-SUFFIX,quanmin.baidu.com
+  - DOMAIN-SUFFIX,vimeo.com
+  - DOMAIN-SUFFIX,movie.douban.com
+  - DOMAIN-SUFFIX,1905.com
+  - DOMAIN-SUFFIX,longzhu.com
+  - DOMAIN-SUFFIX,zjstv.com
+  - DOMAIN-SUFFIX,tv.jstv.com
+  - DOMAIN-SUFFIX,gdtv.com.cn
+  - DOMAIN-SUFFIX,v.iqilu.com
+  - DOMAIN-SUFFIX,ahtv.cn
+  - DOMAIN-SUFFIX,xiaodutv.com
+  - DOMAIN-SUFFIX,www.le.com
+  - DOMAIN-SUFFIX,baomihua.com
+  - DOMAIN-SUFFIX,www.v1.cn
+  - DOMAIN-SUFFIX,www.ku6.com
+  - DOMAIN-SUFFIX,video.sina.com.cn
+  - DOMAIN-SUFFIX,www.tvsou.com
+  - DOMAIN-SUFFIX,finka.cn
+  - DOMAIN-SUFFIX,imifun.com
+  - DOMAIN-SUFFIX,oxiu.com
+  - DOMAIN-SUFFIX,contentchina.com
+  - DOMAIN-SUFFIX,ehaitv.com
+  - DOMAIN-SUFFIX,7idj.com
+  - DOMAIN-SUFFIX,dilidili.io
+  - DOMAIN-SUFFIX,kumi.cn
+  - DOMAIN-SUFFIX,singduck.cn
+
+# 购物类应用
+shopping:
+  - DOMAIN-SUFFIX,taobao.com
+  - DOMAIN-SUFFIX,alicdn.com
+  - DOMAIN-SUFFIX,tmall.com
+  - DOMAIN-SUFFIX,360buyimg.com
+  - DOMAIN-SUFFIX,jd.com
+  - DOMAIN-SUFFIX,jdcdn.com
+  - DOMAIN-SUFFIX,vod.300hu.com
+  - DOMAIN-SUFFIX,pinduoduo.com
+  - DOMAIN-SUFFIX,yangkeduo.com
+  - DOMAIN-SUFFIX,s1p.cdntip.com
+  - DOMAIN-SUFFIX,vips-mobile.com
+  - DOMAIN-SUFFIX,vipshop.com
+  - DOMAIN-SUFFIX,vip.com
+  - DOMAIN-SUFFIX,vipstatic.com
+  - DOMAIN-SUFFIX,appsimg.com
+  - DOMAIN-SUFFIX,eleme.com
+  - DOMAIN-SUFFIX,ecombdimg.com
+  - DOMAIN-SUFFIX,xianyu.com
+  - DOMAIN-SUFFIX,zhuanzhuan.com
+  - DOMAIN-SUFFIX,zhuanstatic.com
+  - DOMAIN-SUFFIX,mogujie.com
+  - DOMAIN-SUFFIX,mogucdn.com
+  - DOMAIN-SUFFIX,suning.com
+  - DOMAIN-SUFFIX,dangdang.com
+  - DOMAIN-SUFFIX,yhd.com
+  - DOMAIN-SUFFIX,pupumall.com
+  - DOMAIN-SUFFIX,pupuapi.com
+  - DOMAIN-SUFFIX,ddxq.mobi
+  - DOMAIN-SUFFIX,youpin.com
+  - DOMAIN-SUFFIX,shopapi.io.mi.com
+  - DOMAIN-SUFFIX,weidian.com
+  - DOMAIN-SUFFIX,zhe800.com
+  - DOMAIN-SUFFIX,www.hm.com
+  - DOMAIN-SUFFIX,measurement.com
+  - DOMAIN-SUFFIX,hzhstb.com
+  - DOMAIN-SUFFIX,smzdm.com
+  - DOMAIN-SUFFIX,yanxuan.com
+  - DOMAIN-SUFFIX,shihuo.com
+  - DOMAIN-SUFFIX,kaola.com
+  - DOMAIN-SUFFIX,ikea.cn
+  - DOMAIN-SUFFIX,xiaoxiangyoupin.com
+  - DOMAIN-SUFFIX,gome.com
+  - DOMAIN-SUFFIX,jiuxian.com
+  - DOMAIN-SUFFIX,1688.com
+  - DOMAIN-SUFFIX,amazon.cn
+  - DOMAIN-SUFFIX,lazada.com
+
+# 音乐类应用
+music:
+  - DOMAIN-SUFFIX,music.163.com
+  - DOMAIN-SUFFIX,music.126.com
+  - DOMAIN-SUFFIX,qqmusic.com
+  - DOMAIN-SUFFIX,kugou.com
+  - DOMAIN-SUFFIX,kgimg.com
+  - DOMAIN-SUFFIX,fanxing.com
+  - DOMAIN-SUFFIX,kuwo.cn
+  - DOMAIN-SUFFIX,ximalaya.com
+  - DOMAIN-SUFFIX,music.taihe.com
+  - DOMAIN-SUFFIX,xiami.com
+  - DOMAIN-SUFFIX,yinyuetai.com
+  - DOMAIN-SUFFIX,douban.fm
+  - DOMAIN-SUFFIX,changba.com
+  - DOMAIN-SUFFIX,fm.taihe.com
+  - DOMAIN-SUFFIX,lrts.me
+
+# 招聘类应用
+employee:
+  - DOMAIN-SUFFIX,51job.com
+  - DOMAIN-SUFFIX,zhaopin.com
+  - DOMAIN-SUFFIX,liepin.com
+  - DOMAIN-SUFFIX,58.com
+  - DOMAIN-SUFFIX,58cdn.com
+  - DOMAIN-SUFFIX,xiaomei.com
+  - DOMAIN-SUFFIX,linkedin.com
+  - DOMAIN-SUFFIX,doumi.com
+  - DOMAIN-SUFFIX,kanzhun.com
+  - DOMAIN-SUFFIX,yingjiesheng.com
+  - DOMAIN-SUFFIX,chinahr.com
+  - DOMAIN-SUFFIX,lagou.com
+  - DOMAIN-SUFFIX,dajie.com
+  - DOMAIN-SUFFIX,zhipin.com
+  - DOMAIN-SUFFIX,shixiseng.com
+
+# 下载类应用
+download:
+  - DOMAIN-SUFFIX,itunes.apple.com
+  - DOMAIN-SUFFIX,appstore.vivo.com
+  - DOMAIN-SUFFIX,apkappdefwsdl.vivo.com
+  - DOMAIN-SUFFIX,ctyunapi.com
+  - DOMAIN-SUFFIX,weiyun.com
+  - DOMAIN-SUFFIX,aegis.qq.com
+  - DOMAIN-SUFFIX,pingtas.qq.com
+  - DOMAIN-SUFFIX,jianguoyun.com
+  - DOMAIN-SUFFIX,pan.lanzou.com
+  - DOMAIN-SUFFIX,cloud.huawei.com
+  - DOMAIN-SUFFIX,hicloud.com
+  - DOMAIN-SUFFIX,myhuaweicloud.cn
+  - DOMAIN-SUFFIX,update.microsoft.com
+  - DOMAIN-SUFFIX,windowsupdate.com
+  - DOMAIN-SUFFIX,oray.com
+  - DOMAIN-SUFFIX,oray.net
+  - DOMAIN-SUFFIX,teamviewer.com
+  - DOMAIN-SUFFIX,aliyundrive.com
+
+# 常用网站
+website:
+  - DOMAIN-SUFFIX,baidu.com
+  - DOMAIN-SUFFIX,google.com
+  - DOMAIN-SUFFIX,sina.com
+  - DOMAIN-SUFFIX,sohu.com
+  - DOMAIN-SUFFIX,163.com
+  - DOMAIN-SUFFIX,126.com
+  - DOMAIN-SUFFIX,ifeng.com
+  - DOMAIN-SUFFIX,hao123.com
+  - DOMAIN-SUFFIX,2345.com
+  - DOMAIN-SUFFIX,people.com.cn
+  - DOMAIN-SUFFIX,china.com
+  - DOMAIN-SUFFIX,tianya.cn
+  - DOMAIN-SUFFIX,qyer.com
+  - DOMAIN-SUFFIX,lvmama.com
+  - DOMAIN-SUFFIX,pcauto.com.cn
+  - DOMAIN-SUFFIX,bitauto.com
+  - DOMAIN-SUFFIX,xcar.com.cn
+  - DOMAIN-SUFFIX,hexun.com
+  - DOMAIN-SUFFIX,yicai.com
+  - DOMAIN-SUFFIX,p5w.net
+  - DOMAIN-SUFFIX,zhcw.com
+  - DOMAIN-SUFFIX,lottery.gov.cn
+  - DOMAIN-SUFFIX,docin.com
+  - DOMAIN-SUFFIX,booking.com
+  - DOMAIN-SUFFIX,mop.com
+  - DOMAIN-SUFFIX,xxsy.net
+  - DOMAIN-SUFFIX,sports.cctv.com
+  - DOMAIN-SUFFIX,hupu.com
+  - DOMAIN-SUFFIX,cnki.net
+  - DOMAIN-SUFFIX,gitee.com
+  - DOMAIN-SUFFIX,bing.com
+  - DOMAIN-SUFFIX,cwl.gov.cn
+  - DOMAIN-SUFFIX,lottery.sina.com.cn
+  - DOMAIN-SUFFIX,sporttery.cn
+  - DOMAIN-SUFFIX,sports.sina.com.cn
+  - DOMAIN-SUFFIX,mi.com
+  - DOMAIN-SUFFIX,bbc.com
+  - DOMAIN-SUFFIX,zenvideo.qq.com
+  - DOMAIN-SUFFIX,ithome.com
+  - DOMAIN-SUFFIX,pconline.com.cn
+  - DOMAIN-SUFFIX,10086.cn
+  - DOMAIN-SUFFIX,10010.com
+  - DOMAIN-SUFFIX,189.cn
+  - DOMAIN-SUFFIX,vmall.com
+  - DOMAIN-SUFFIX,vivo.com.cn
+  - DOMAIN-SUFFIX,huawei.com
+  - DOMAIN-SUFFIX,apple.com
+  - DOMAIN-SUFFIX,gmw.cn
+  - DOMAIN-SUFFIX,xinhuanet.com
+  - DOMAIN-SUFFIX,cctv.com
+  - DOMAIN-SUFFIX,cri.cn
+  - DOMAIN-SUFFIX,ce.cn
+  - DOMAIN-SUFFIX,qstheory.cn
+  - DOMAIN-SUFFIX,youth.cn
+  - DOMAIN-SUFFIX,aiqicha.baidu.com
+  - DOMAIN-SUFFIX,wenku.baidu.com
+  - DOMAIN-SUFFIX,wenku.so.com
+  - DOMAIN-SUFFIX,tieba.baidu.com
+  - DOMAIN-SUFFIX,zhidao.baidu.com
+
+# 生活类应用
+life:
+  - DOMAIN-SUFFIX,jdpay.com
+  - DOMAIN-SUFFIX,eleme.com
+  - DOMAIN-SUFFIX,meituan.com
+  - DOMAIN-SUFFIX,douban.com
+  - DOMAIN-SUFFIX,zhihu.com
+  - DOMAIN-SUFFIX,lianjia.com
+  - DOMAIN-SUFFIX,tianyancha.com
+  - DOMAIN-SUFFIX,dict.youdao.com
+  - DOMAIN-SUFFIX,ys7.com
+  - DOMAIN-SUFFIX,ireader.com
+  - DOMAIN-SUFFIX,zhangyue.com
+  - DOMAIN-SUFFIX,anjuke.com
+  - DOMAIN-SUFFIX,fang.com
+  - DOMAIN-SUFFIX,dmzj.com
+  - DOMAIN-SUFFIX,autohome.com.cn
+  - DOMAIN-SUFFIX,fliggy.com
+  - DOMAIN-SUFFIX,12306.cn
+  - DOMAIN-SUFFIX,mafengwo.cn
+  - DOMAIN-SUFFIX,tuniu.com
+  - DOMAIN-SUFFIX,ai.xiaomi.com
+  - DOMAIN-SUFFIX,mina.mi.com
+  - DOMAIN-SUFFIX,pinyin.sogou.com
+
+# 金融类应用
+finance:
+  - DOMAIN-SUFFIX,ccb.com
+  - DOMAIN-SUFFIX,abchina.com
+  - DOMAIN-SUFFIX,boc.cn
+  - DOMAIN-SUFFIX,bankcomm.com
+  - DOMAIN-SUFFIX,cmbchina.com
+  - DOMAIN-SUFFIX,psbc.com
+  - DOMAIN-SUFFIX,cib.com.cn
+  - DOMAIN-SUFFIX,spdb.com.cn
+  - DOMAIN-SUFFIX,citicbank.com
+  - DOMAIN-SUFFIX,bosc.cn
+  - DOMAIN-SUFFIX,pingan.com.cn
+  - DOMAIN-SUFFIX,pbc.gov.cn
+  - DOMAIN-SUFFIX,bankofbeijing.com.cn
+  - DOMAIN-SUFFIX,95516.com
+
+# 工具类应用
+tools:
+  # SMB共享端口规则
+  - IP-CIDR,0.0.0.0/0,no-resolve
