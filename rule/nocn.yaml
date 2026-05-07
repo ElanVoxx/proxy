@@ -1,9 +1,5 @@
-# Clash/Mihomo规则集 - 基于DDPI特征库转换
-# 分类：应用识别规则
-# 格式：DOMAIN-SUFFIX, DOMAIN, IP-CIDR等
-
-# 聊天类应用
-chat:
+payload:
+  # 聊天类应用
   - DOMAIN-SUFFIX,weixin.qq.com
   - DOMAIN-SUFFIX,weibo.com
   - DOMAIN-SUFFIX,momo.com
@@ -19,9 +15,7 @@ chat:
   - DOMAIN-SUFFIX,ppkankan.com
   - DOMAIN-SUFFIX,ifreetalk.com
 
-# 游戏类应用
-game:
-  # 王者荣耀相关域名（示例）
+  # 游戏类应用
   - DOMAIN-SUFFIX,netease.com
   - DOMAIN-SUFFIX,4399.com
   - DOMAIN-SUFFIX,mini1.cn
@@ -66,8 +60,7 @@ game:
   - DOMAIN-SUFFIX,playrix.com
   - DOMAIN-SUFFIX,uu.cc
 
-# 视频类应用
-video:
+  # 视频类应用
   - DOMAIN-SUFFIX,douyin.com
   - DOMAIN-SUFFIX,amemv.com
   - DOMAIN-SUFFIX,pstatp.com
@@ -76,7 +69,7 @@ video:
   - DOMAIN-SUFFIX,douyu.com
   - DOMAIN-SUFFIX,iqiyi.com
   - DOMAIN-SUFFIX,qy.net
-  - DOMAIN-SUFFIX,inter.71edge.com
+  - DOMAIN-SUFFIX,inter.71edge.SUFFIX
   - DOMAIN-SUFFIX,bilibili.com
   - DOMAIN-SUFFIX,bilivideo.com
   - DOMAIN-SUFFIX,data.bilibili.com
@@ -126,7 +119,7 @@ video:
   - DOMAIN-SUFFIX,1905.com
   - DOMAIN-SUFFIX,longzhu.com
   - DOMAIN-SUFFIX,zjstv.com
-  - DOMAIN-SUFFIX,tv.jstv.com
+  - DOMAIN-SEFFIX,tv.jstv.com
   - DOMAIN-SUFFIX,gdtv.com.cn
   - DOMAIN-SUFFIX,v.iqilu.com
   - DOMAIN-SUFFIX,ahtv.cn
@@ -147,8 +140,7 @@ video:
   - DOMAIN-SUFFIX,kumi.cn
   - DOMAIN-SUFFIX,singduck.cn
 
-# 购物类应用
-shopping:
+  # 购物类应用
   - DOMAIN-SUFFIX,taobao.com
   - DOMAIN-SUFFIX,alicdn.com
   - DOMAIN-SUFFIX,tmall.com
@@ -196,8 +188,7 @@ shopping:
   - DOMAIN-SUFFIX,amazon.cn
   - DOMAIN-SUFFIX,lazada.com
 
-# 音乐类应用
-music:
+  # 音乐类应用
   - DOMAIN-SUFFIX,music.163.com
   - DOMAIN-SUFFIX,music.126.com
   - DOMAIN-SUFFIX,qqmusic.com
@@ -214,8 +205,7 @@ music:
   - DOMAIN-SUFFIX,fm.taihe.com
   - DOMAIN-SUFFIX,lrts.me
 
-# 招聘类应用
-employee:
+  # 招聘类应用
   - DOMAIN-SUFFIX,51job.com
   - DOMAIN-SUFFIX,zhaopin.com
   - DOMAIN-SUFFIX,liepin.com
@@ -232,7 +222,7 @@ employee:
   - DOMAIN-SUFFIX,zhipin.com
   - DOMAIN-SUFFIX,shixiseng.com
 
-download:
+  # 下载类应用
   - DOMAIN-SUFFIX,itunes.apple.com
   - DOMAIN-SUFFIX,appstore.vivo.com
   - DOMAIN-SUFFIX,apkappdefwsdl.vivo.com
@@ -251,7 +241,7 @@ download:
   - DOMAIN-SUFFIX,teamviewer.com
   - DOMAIN-SUFFIX,aliyundrive.com
 
-website:
+  # 网站类应用
   - DOMAIN-SUFFIX,sina.com
   - DOMAIN-SUFFIX,sohu.com
   - DOMAIN-SUFFIX,163.com
@@ -308,7 +298,7 @@ website:
   - DOMAIN-SUFFIX,tieba.baidu.com
   - DOMAIN-SUFFIX,zhidao.baidu.com
 
-life:
+  # 生活类应用
   - DOMAIN-SUFFIX,jdpay.com
   - DOMAIN-SUFFIX,eleme.com
   - DOMAIN-SUFFIX,meituan.com
@@ -332,7 +322,7 @@ life:
   - DOMAIN-SUFFIX,mina.mi.com
   - DOMAIN-SUFFIX,pinyin.sogou.com
 
-finance:
+  # 金融类应用
   - DOMAIN-SUFFIX,ccb.com
   - DOMAIN-SUFFIX,abchina.com
   - DOMAIN-SUFFIX,boc.cn
