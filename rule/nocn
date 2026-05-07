@@ -232,7 +232,6 @@ employee:
   - DOMAIN-SUFFIX,zhipin.com
   - DOMAIN-SUFFIX,shixiseng.com
 
-# 下载类应用
 download:
   - DOMAIN-SUFFIX,itunes.apple.com
   - DOMAIN-SUFFIX,appstore.vivo.com
@@ -247,16 +246,12 @@ download:
   - DOMAIN-SUFFIX,hicloud.com
   - DOMAIN-SUFFIX,myhuaweicloud.cn
   - DOMAIN-SUFFIX,update.microsoft.com
-  - DOMAIN-SUFFIX,windowsupdate.com
   - DOMAIN-SUFFIX,oray.com
   - DOMAIN-SUFFIX,oray.net
   - DOMAIN-SUFFIX,teamviewer.com
   - DOMAIN-SUFFIX,aliyundrive.com
 
-# 常用网站
 website:
-  - DOMAIN-SUFFIX,baidu.com
-  - DOMAIN-SUFFIX,google.com
   - DOMAIN-SUFFIX,sina.com
   - DOMAIN-SUFFIX,sohu.com
   - DOMAIN-SUFFIX,163.com
@@ -283,8 +278,6 @@ website:
   - DOMAIN-SUFFIX,xxsy.net
   - DOMAIN-SUFFIX,sports.cctv.com
   - DOMAIN-SUFFIX,hupu.com
-  - DOMAIN-SUFFIX,cnki.net
-  - DOMAIN-SUFFIX,gitee.com
   - DOMAIN-SUFFIX,bing.com
   - DOMAIN-SUFFIX,cwl.gov.cn
   - DOMAIN-SUFFIX,lottery.sina.com.cn
@@ -315,7 +308,6 @@ website:
   - DOMAIN-SUFFIX,tieba.baidu.com
   - DOMAIN-SUFFIX,zhidao.baidu.com
 
-# 生活类应用
 life:
   - DOMAIN-SUFFIX,jdpay.com
   - DOMAIN-SUFFIX,eleme.com
@@ -340,7 +332,6 @@ life:
   - DOMAIN-SUFFIX,mina.mi.com
   - DOMAIN-SUFFIX,pinyin.sogou.com
 
-# 金融类应用
 finance:
   - DOMAIN-SUFFIX,ccb.com
   - DOMAIN-SUFFIX,abchina.com
@@ -356,8 +347,3 @@ finance:
   - DOMAIN-SUFFIX,pbc.gov.cn
   - DOMAIN-SUFFIX,bankofbeijing.com.cn
   - DOMAIN-SUFFIX,95516.com
-
-# 工具类应用
-tools:
-  # SMB共享端口规则
-  - IP-CIDR,0.0.0.0/0,no-resolve
