@@ -5,7 +5,7 @@
   },
   "dns": {
     "servers": [
-      {"tag": "dns-direct", "type": "udp", "server": "223.5.5.5"},
+      {"tag": "dns-direct", "type": "udp", "server": "119.6.6.6"},
       {"tag": "dns-proxy", "type": "https", "server": "8.8.8.8", "detour": "Select"}
     ],
     "rules": [
@@ -16,7 +16,7 @@
     "strategy": "ipv4_only"
   },
   "inbounds": [
-    {"type": "tun", "tag": "tun-in", "interface_name": "sb-tun", "address": ["172.19.0.1/30", "fdfe:dcba:9876::1/126"], "auto_route": true, "strict_route": true, "stack": "system"}
+    {"type": "tun", "tag": "tun-in", "interface_name": "sb-tun", "address": ["172.19.0.1/30", "fdfe:dcba:9876::1/126"], "auto_route": true, "strict_route": true, "stack": "mixed"}
   ],
   "outbounds": [
     {"type": "direct", "tag": "direct"},
@@ -29,6 +29,7 @@
   ],
   "route": {
     "auto_detect_interface": true,
+    "default_domain_resolver": "dns-direct",
     "rule_set": [
       {"tag": "diyproxy", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/ElanVoxx/proxy/refs/heads/main/rule/diyproxy.srs", "download_detour": "Select", "update_interval": "48h"},
       {"tag": "openai", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/openai.srs", "download_detour": "Select", "update_interval": "48h"},
