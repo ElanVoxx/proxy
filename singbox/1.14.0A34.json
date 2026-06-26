@@ -1,0 +1,92 @@
+{
+  "log":{"level":"error","timestamp":true},
+
+  "dns":{
+    "servers":[
+      {"type":"hosts","tag":"hosts_fix","predefined":{"security.cloudflare-dns.com":["104.16.248.249","104.16.249.249"]}},
+      {"type":"local","tag":"local-dns"},
+      {"type":"https","tag":"cf-dns","detour":"proxy","domain_resolver":"hosts_fix","server":"security.cloudflare-dns.com","path":"/dns-query"}
+    ],
+    "rules":[
+      {"ip_version":6,"action":"reject"},
+      {"rule_set":["httpDNS"],"action":"reject"},
+      {"rule_set":"private","server":"local-dns"},
+      {"rule_set":"cn","server":"local-dns"},
+      {"domain_suffix":[".cn",".com.cn"],"server":"local-dns"},
+      {"rule_set":["ai"],"server":"cf-dns"},
+      {"query_type":["A","AAAA"],"invert":true,"action":"reject"}
+    ],
+    "final":"cf-dns",
+    "timeout":"3s",
+    "cache_capacity":50000,
+    "optimistic":{"enabled":true,"timeout":"30m"}
+  },
+
+  "http_clients":[
+    {"tag":"default","version":2},
+    {"tag":"proxy","version":2,"detour":"proxy"}
+  ],
+
+  "inbounds":[
+    {
+      "type":"tun",
+      "tag":"tun-in",
+      "mtu":1500,
+      "address":["10.8.0.1/24","fdfe:dcba:9876::1/126"],
+      "dns_mode":"hijack",
+      "dns_address":["10.8.0.2","fdfe:dcba:9876::2"],
+      "auto_route":true,
+      "strict_route":true,
+      "route_address_set":["cnip","private"],
+      "stack":"mixed",
+      "endpoint_independent_nat":true
+    }
+  ],
+
+  "outbounds":[
+    {"type":"direct","tag":"DIRECT"},
+    {"type":"selector","tag":"proxy","outbounds":[]},
+    {"type":"selector","tag":"ai","outbounds":[]}
+  ],
+
+  "route":{
+    "rules":[
+      {"action":"sniff"},
+      {"type":"logical","mode":"or","rules":[{"port":53},{"protocol":"dns"}],"action":"hijack-dns"},
+      {"type":"logical","mode":"and","rules":[{"ip_version":6},{"default_interface_address":"2000::/3","invert":true}],"action":"reject"},
+      {"port":[853,5353],"action":"reject"},
+      {"ip_is_private":true,"outbound":"DIRECT"},
+	  {"rule_set":["cn","cnip","private","microsoft-cn","apple-cn","games-cn"],"outbound":"DIRECT"},
+      {"rule_set":["ai"],"outbound":"ai"},
+      {"protocol":["stun","dtls"],"action":"reject"},
+      {"type":"logical","mode":"or","rules":[{"network":"udp","port":[3478,5349,5350,19302,10000]},{"domain_regex":"^stun\\..+"},{"domain_keyword":["stun","turn","httpdns"]}],"action":"reject"},
+      {"action":"route-options","udp_disable_domain_unmapping":true,"udp_connect":true},
+      {"action":"resolve"},
+      {"outbound":"proxy"}
+    ],
+
+    "rule_set":[
+      {"type":"remote","tag":"cn","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"cnip","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"private","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"microsoft-cn","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/microsoft-cn.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"apple-cn","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/apple-cn.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"games-cn","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games-cn.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"ai","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/ai.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"httpDNS","url":"https://cdn.jsdelivr.net/gh/senshinya/singbox_ruleset@main/rule/BlockHttpDNS/BlockHttpDNS.srs","http_client":"default","update_interval":"48h0m0s"}
+    ],
+
+    "final":"proxy",
+    "auto_detect_interface":true,
+    "default_domain_resolver":"local-dns"
+  },
+
+  "services":[
+    {"type":"api","tag":"api","listen":"127.0.0.1","listen_port":9091,"access_control_allow_private_network":true,"dashboard":true}
+  ],
+
+  "experimental":{
+    "cache_file":{"enabled":true,"path":"cache.db","store_dns":true},
+    "debug":{"gc_percent":100,"memory_limit":"400MB"}
+  }
+}
