@@ -13,7 +13,7 @@
       {"rule_set":"private","server":"local-dns"},
       {"rule_set":"cn","server":"local-dns"},
       {"domain_suffix":[".cn",".com.cn"],"server":"local-dns"},
-      {"rule_set":["ai"],"server":"cf-dns"},
+      {"rule_set":["openai"],"server":"cf-dns"},
       {"query_type":["A","AAAA"],"invert":true,"action":"reject"}
     ],
     "final":"cf-dns",
@@ -46,7 +46,8 @@
   "outbounds":[
     {"type":"direct","tag":"DIRECT"},
     {"type":"selector","tag":"proxy","outbounds":[]},
-    {"type":"selector","tag":"ai","outbounds":[]}
+    {"type":"selector","tag":"ai","outbounds":[]},
+	{"type":"selector","tag":"telegram","outbounds":[]}
   ],
 
   "route":{
@@ -56,8 +57,9 @@
       {"type":"logical","mode":"and","rules":[{"ip_version":6},{"default_interface_address":"2000::/3","invert":true}],"action":"reject"},
       {"port":[853,5353],"action":"reject"},
       {"ip_is_private":true,"outbound":"DIRECT"},
-	  {"rule_set":["cn","cnip","private","microsoft-cn","apple-cn","games-cn"],"outbound":"DIRECT"},
-      {"rule_set":["ai"],"outbound":"ai"},
+	  {"rule_set":["cn","cnip","private","microsoft-cn"],"outbound":"DIRECT"},
+      {"rule_set":["openai"],"outbound":"ai"},
+      {"rule_set":["telegram","telegramip"],"outbound":"telegram"},
       {"protocol":["stun","dtls"],"action":"reject"},
       {"type":"logical","mode":"or","rules":[{"network":"udp","port":[3478,5349,5350,19302,10000]},{"domain_regex":"^stun\\..+"},{"domain_keyword":["stun","turn","httpdns"]}],"action":"reject"},
       {"action":"route-options","udp_disable_domain_unmapping":true,"udp_connect":true},
@@ -66,13 +68,13 @@
     ],
 
     "rule_set":[
-      {"type":"remote","tag":"cn","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs","http_client":"default","update_interval":"48h0m0s"},
-      {"type":"remote","tag":"cnip","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs","http_client":"default","update_interval":"48h0m0s"},
-      {"type":"remote","tag":"private","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs","http_client":"default","update_interval":"48h0m0s"},
-      {"type":"remote","tag":"microsoft-cn","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/microsoft-cn.srs","http_client":"default","update_interval":"48h0m0s"},
-      {"type":"remote","tag":"apple-cn","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/apple-cn.srs","http_client":"default","update_interval":"48h0m0s"},
-      {"type":"remote","tag":"games-cn","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games-cn.srs","http_client":"default","update_interval":"48h0m0s"},
-      {"type":"remote","tag":"ai","url":"https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/ai.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"cn","url":"https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/sing/geo-lite/geosite/cn.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"cnip","url":"https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/sing/geo-lite/geoip/cn.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"private","url":"https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/sing/geo-lite/geoip/private.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"microsoft-cn","url":"https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/sing/geo/geosite/microsoft%40cn.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"openai","url":"https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/sing/geo/geosite/openai.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"telegram","url":"https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/sing/geo/geosite/telegram.srs","http_client":"default","update_interval":"48h0m0s"},
+      {"type":"remote","tag":"telegramip","url":"https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/sing/geo/geoip/telegram.srs","http_client":"default","update_interval":"48h0m0s"},	  
       {"type":"remote","tag":"httpDNS","url":"https://cdn.jsdelivr.net/gh/senshinya/singbox_ruleset@main/rule/BlockHttpDNS/BlockHttpDNS.srs","http_client":"default","update_interval":"48h0m0s"}
     ],
 
