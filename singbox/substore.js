@@ -2,7 +2,7 @@ let config = (ProxyUtils.JSON5 || JSON).parse($content ?? $files[0])
 
 const proxies = await produceArtifact({
   type: 'subscription',
-  name: 'YlingLD',
+  name: 'subtore订阅名称',
   platform: 'sing-box',
   produceType: 'internal'
 })
