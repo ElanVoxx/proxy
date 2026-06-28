@@ -1,2 +1,4 @@
-payload:
-    - +.ap-southeast-1.maas.aliyuncs.com
+Payload:
+- +.ap-southeast-1.maas.aliyuncs.com    #阿里国际API
+- +.api.wudi987.com    #wudi的API
+- +.api.freemodel.dev    #freemodel的API
