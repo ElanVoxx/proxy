@@ -1,5 +1,5 @@
 payload:
- - DOMAIN,v1.uhdnow.com
- - DOMAIN,v1.uhdgo.com
- - DOMAIN,link00.okemby.org
- - DOMAIN,link1.okemby.org
+ - v1.uhdnow.com
+ - v1.uhdgo.com
+ - link00.okemby.org
+ - link1.okemby.org
